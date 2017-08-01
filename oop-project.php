@@ -1,6 +1,6 @@
 <?php
 // Creating a class, instantiating an object from it and calling its method(s)
-// Tool: PHP; Date: 30/07/2017
+// Tool: PHP; Date: 01/08/2017
 
 class Student  
 {
