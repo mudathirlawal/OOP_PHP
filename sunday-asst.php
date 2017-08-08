@@ -1,30 +1,34 @@
 <?php
-// THE INCREMENT VARIABLE IN THIS CODE DOES NOT WORK;
-// I'VE BEEN TRYING TO NO AVAIL SINCE YESTERDAY>
-//...PLEASE HELP. THANKS
-
-class Table
+class MultiplicationTable
 {
-    public $num;
-    public $i;
-    public $sample;
-    
-    public function __construct($num, $i) {
+    private $num;
+    private $count;
+    private $tableObj;
+
+    public function __construct($num, $count) {
       $this->num = $num;
-      $this->i = $i;
-      for( $i=1; $i<=10; $i++) {
-            echo ($this->i) . "  X  " . $this->num . "  =  " . ($this->i * $this->num) . PHP_EOL;
+      for( $count = 10; $count <= 20; $count++ ) {
+          $this->count = $count;
+          echo ($this->num . "  X  " . $this->count . "  =  " . ($this->count * $this->num) . PHP_EOL);
         }
+    }
+    
+    public function __toString() {
+     return 
+         "I'm an object that can calculate the product of two numbers in the number of iterations you specify.";
     }
     
     public function getNum()
     {
-        return "THE NUMBER IS: " . $this->num;
+        return "MULTIPLIED NUMBER: " . $this->num . PHP_EOL;
     }
 }
-
 // Method call:
-$sample = new Table(3, 1);
-echo "............" . PHP_EOL;
-echo $sample->getNum();
+$tableObj = new MultiplicationTable(5, 10);
+echo "................" . PHP_EOL;
+echo PHP_EOL;
+echo $tableObj->getNum();
+echo PHP_EOL;
+echo $tableObj;
 // End of file.
+
