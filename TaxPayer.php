@@ -65,57 +65,57 @@ class TaxPayer
     
     public function getAnnualTaxBill($annualIncome) 
     {
-    if( $this->annualIncome <= self::INCOME_PORTION_1 ) {
-        $this->initialTaxCharge1 = $this->annualIncome * self::FIRST_TAX_RATE;
-        return $this->totalTaxBill = $this->initialTaxCharge1;
-    } else {
-        $this->firstRemainder = $this->annualIncome - self::INCOME_PORTION_1;
-        if( $this->firstRemainder   <= self::INCOME_PORTION_2 ) {
-            $this->initialTaxCharge2 = $this->firstRemainder  * self::SECOND_TAX_RATE;
-            $this->initialTaxCharge1 = self::INCOME_PORTION_1 * self::FIRST_TAX_RATE;
-            return $this->totalTaxBill = $this->initialTaxCharge1 + $this->initialTaxCharge2;
+        if( $this->annualIncome <= self::INCOME_PORTION_1 ) {
+            $this->initialTaxCharge1 = $this->annualIncome * self::FIRST_TAX_RATE;
+            return $this->totalTaxBill = $this->initialTaxCharge1;
         } else {
-            $this->secondRemainder = $this->firstRemainder - self::INCOME_PORTION_2;
-            if( $this->secondRemainder    <= self::INCOME_PORTION_3 ) {
-                $this->initialTaxCharge3   = $this->secondRemainder * self::THIRD_TAX_RATE;
-                $this->initialTaxCharge2   = self::INCOME_PORTION_2 * self::SECOND_TAX_RATE;
-                $this->initialTaxCharge1   = self::INCOME_PORTION_1 * self::FIRST_TAX_RATE;
-                return $this->totalTaxBill =   
-                       $this->initialTaxCharge1 + $this->initialTaxCharge2 + $this->initialTaxCharge3;
+            $this->firstRemainder = $this->annualIncome - self::INCOME_PORTION_1;
+            if( $this->firstRemainder   <= self::INCOME_PORTION_2 ) {
+                $this->initialTaxCharge2 = $this->firstRemainder  * self::SECOND_TAX_RATE;
+                $this->initialTaxCharge1 = self::INCOME_PORTION_1 * self::FIRST_TAX_RATE;
+                return $this->totalTaxBill = $this->initialTaxCharge1 + $this->initialTaxCharge2;
             } else {
-                $this->thirdRemainder = $this->secondRemainder - self::INCOME_PORTION_3;
-                if( $this->thirdRemainder   <= self::INCOME_PORTION_4 ) {
-                    $this->initialTaxCharge4 = $this->thirdRemainder  * self::FOURTH_TAX_RATE;
-                    $this->initialTaxCharge3 = self::INCOME_PORTION_3 * self::THIRD_TAX_RATE;
-                    $this->initialTaxCharge2 = self::INCOME_PORTION_2 * self::SECOND_TAX_RATE;
-                    $this->initialTaxCharge1 = self::INCOME_PORTION_1 * self::FIRST_TAX_RATE;
-                    return $this->totalTaxBill = $this->initialTaxCharge1 + $this->initialTaxCharge2 + 
-                                           $this->initialTaxCharge3 + $this->initialTaxCharge4;
+                $this->secondRemainder = $this->firstRemainder - self::INCOME_PORTION_2;
+                if( $this->secondRemainder    <= self::INCOME_PORTION_3 ) {
+                    $this->initialTaxCharge3   = $this->secondRemainder * self::THIRD_TAX_RATE;
+                    $this->initialTaxCharge2   = self::INCOME_PORTION_2 * self::SECOND_TAX_RATE;
+                    $this->initialTaxCharge1   = self::INCOME_PORTION_1 * self::FIRST_TAX_RATE;
+                    return $this->totalTaxBill =   
+                           $this->initialTaxCharge1 + $this->initialTaxCharge2 + $this->initialTaxCharge3;
                 } else {
-                    $this->fourthRemainder = $this->thirdRemainder - self::INCOME_PORTION_4;
-                    if( $this->fourthRemainder  <= self::INCOME_PORTION_5 ) {
-                        $this->initialTaxCharge5 = $this->fourthRemainder * self::FIFTH_TAX_RATE;
-                        $this->initialTaxCharge4 = self::INCOME_PORTION_4 * self::FOURTH_TAX_RATE;
+                    $this->thirdRemainder = $this->secondRemainder - self::INCOME_PORTION_3;
+                    if( $this->thirdRemainder   <= self::INCOME_PORTION_4 ) {
+                        $this->initialTaxCharge4 = $this->thirdRemainder  * self::FOURTH_TAX_RATE;
                         $this->initialTaxCharge3 = self::INCOME_PORTION_3 * self::THIRD_TAX_RATE;
                         $this->initialTaxCharge2 = self::INCOME_PORTION_2 * self::SECOND_TAX_RATE;
                         $this->initialTaxCharge1 = self::INCOME_PORTION_1 * self::FIRST_TAX_RATE;
                         return $this->totalTaxBill = $this->initialTaxCharge1 + $this->initialTaxCharge2 + 
-                               $this->initialTaxCharge3 + $this->initialTaxCharge4 + $this->initialTaxCharge5;
-                    } else { 
-                          $this->fifthRemainder    = $this->annualIncome - (self::INCOME_PORTION_1 +                                         self::INCOME_PORTION_2 + self::INCOME_PORTION_3 + self::INCOME_PORTION_4                                       + self::INCOME_PORTION_5 );
-                          $this->initialTaxCharge6 = $this->fifthRemainder  * self::SIXTH_TAX_RATE;
-                          $this->initialTaxCharge5 = self::INCOME_PORTION_5 * self::FIFTH_TAX_RATE;
-                          $this->initialTaxCharge4 = self::INCOME_PORTION_4 * self::FOURTH_TAX_RATE;
-                          $this->initialTaxCharge3 = self::INCOME_PORTION_3 * self::THIRD_TAX_RATE;
-                          $this->initialTaxCharge2 = self::INCOME_PORTION_2 * self::SECOND_TAX_RATE;
-                          $this->initialTaxCharge1 = self::INCOME_PORTION_1 * self::FIRST_TAX_RATE;
-                          return $this->totalTaxBill = $this->initialTaxCharge1 + $this->initialTaxCharge2 + 
-                                 $this->initialTaxCharge3 + $this->initialTaxCharge4 + $this->initialTaxCharge5                                  + $this->initialTaxCharge6 . PHP_EOL;
+                                               $this->initialTaxCharge3 + $this->initialTaxCharge4;
+                    } else {
+                        $this->fourthRemainder = $this->thirdRemainder - self::INCOME_PORTION_4;
+                        if( $this->fourthRemainder  <= self::INCOME_PORTION_5 ) {
+                            $this->initialTaxCharge5 = $this->fourthRemainder * self::FIFTH_TAX_RATE;
+                            $this->initialTaxCharge4 = self::INCOME_PORTION_4 * self::FOURTH_TAX_RATE;
+                            $this->initialTaxCharge3 = self::INCOME_PORTION_3 * self::THIRD_TAX_RATE;
+                            $this->initialTaxCharge2 = self::INCOME_PORTION_2 * self::SECOND_TAX_RATE;
+                            $this->initialTaxCharge1 = self::INCOME_PORTION_1 * self::FIRST_TAX_RATE;
+                            return $this->totalTaxBill = $this->initialTaxCharge1 + $this->initialTaxCharge2 + 
+                                   $this->initialTaxCharge3 + $this->initialTaxCharge4 + $this->initialTaxCharge5;
+                        } else { 
+                              $this->fifthRemainder    = $this->annualIncome - (self::INCOME_PORTION_1 +                                         self::INCOME_PORTION_2 + self::INCOME_PORTION_3 + self::INCOME_PORTION_4                                       + self::INCOME_PORTION_5 );
+                              $this->initialTaxCharge6 = $this->fifthRemainder  * self::SIXTH_TAX_RATE;
+                              $this->initialTaxCharge5 = self::INCOME_PORTION_5 * self::FIFTH_TAX_RATE;
+                              $this->initialTaxCharge4 = self::INCOME_PORTION_4 * self::FOURTH_TAX_RATE;
+                              $this->initialTaxCharge3 = self::INCOME_PORTION_3 * self::THIRD_TAX_RATE;
+                              $this->initialTaxCharge2 = self::INCOME_PORTION_2 * self::SECOND_TAX_RATE;
+                              $this->initialTaxCharge1 = self::INCOME_PORTION_1 * self::FIRST_TAX_RATE;
+                              return $this->totalTaxBill = $this->initialTaxCharge1 + $this->initialTaxCharge2 + 
+                                     $this->initialTaxCharge3 + $this->initialTaxCharge4 + $this->initialTaxCharge5                                  + $this->initialTaxCharge6 . PHP_EOL;
+                        }
                     }
-                }
-            } 
+                } 
+            }
         }
-    }
     }
 } # End of class definition.
 #........................................................................................................
